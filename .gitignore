@@ -1,4 +1,6 @@
-app/config/.keys.cfg
 __pycache__/
 env/
 app/core/clustering.ipynb
+app/config/.keys.cfg
+download/
+out/

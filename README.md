@@ -31,7 +31,7 @@ pip3 install -r requirements.txt
 ```bash
 python3 main.py --repo <repository> --cluster
 ```
-- Run the script to retrieve data from the GitHub API and perform the clustering analysis with custom clustering level:
+- Retrieve data and perform the clustering analysis with custom clustering level:
 ```bash
 python3 main.py --repo <repository> --cluster --clevel <clustering_level>
 ```

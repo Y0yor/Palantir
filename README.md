@@ -39,7 +39,7 @@ python3 main.py --repo <repository> --cluster --clevel <clustering_level>
 ## Documentation
 - [Hierarchical clustering](/docs/hierarchical_clustering.md)
 
-Example of dendrogram with a 1.3 clustering level:
+Dendrogram with a 1.3 clustering level:
 ![hc_clevel](/docs/static/hc.png)
 # License
 

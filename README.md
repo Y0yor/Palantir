@@ -37,7 +37,7 @@ python3 main.py --repo <repository> --cluster --clevel <clustering_level>
 ```
 
 ## Documentation
-- [Hierarchical clustering](/docs/hierarchical_clustering.md)
+- [Agglomerative hierarchical clustering](/docs/hierarchical_clustering.md)
 
 # License
 

@@ -38,8 +38,8 @@ python3 main.py --repo <repository> --cluster --clevel <clustering_level>
 
 ## Documentation
 - [Hierarchical clustering](/docs/hierarchical_clustering.md)
-- Example of dendrogram with a 1.3 clustering level:
-![hc_clevel](docs/static/hc.png)
+Example of dendrogram with a 1.3 clustering level:
+![hc_clevel](/docs/static/hc.png)
 # License
 
 Source code of `palantir` is available under the [GNU General Public License v3.0](/LICENSE).

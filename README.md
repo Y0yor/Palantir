@@ -27,8 +27,14 @@ pip3 install -r requirements.txt
 - Add your [github API token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) under *app/config/.keys.cfg*
 
 ## Usage
-TODO
-
+- Run the script to retrieve data from the GitHub API and perform the clustering analysis with default parameters:
+```bash
+python3 main.py --repo <repository> --cluster
+```
+- Run the script to retrieve data from the GitHub API and perform the clustering analysis with custom clustering level:
+```bash
+python3 main.py --repo <repository> --cluster --clevel <clustering_level>
+```
 # License
 
 Source code of `palantir` is available under the [GNU General Public License v3.0](/LICENSE).

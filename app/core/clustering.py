@@ -103,13 +103,13 @@ def cluster(link_matrix, global_distance, df):
     df['cluster'] = cluster
     return df
     
-def export_cluster(link_matrix, df):
-    clusters = fcluster(link_matrix,t=1.3, criterion='distance')
+def export_cluster(link_matrix, df, clevel):
+    clusters = fcluster(link_matrix,t=clevel, criterion='distance')
     df_clust = pd.DataFrame({'Cluster':clusters, 'Features':df['name']})
     df_clust = df_clust.sort_values(by=['Cluster'])
     df_clust.to_csv('../out/cluster.csv', index=False)
     
-def file_clustering_process(path):
+def file_clustering_process(path, clevel):
     # Get data
     df = get_data(path)
     # Clean data
@@ -127,12 +127,12 @@ def file_clustering_process(path):
     # Cluster
     df = cluster(link_matrix, gdistance, df)
     # Export cluster
-    export_cluster(link_matrix, df)
+    export_cluster(link_matrix, df, clevel)
 
-def global_clustering():
+def global_clustering(clevel=1.3):
     for file in os.listdir('../download/'):
         if file.endswith(".json"):
             path = '../download/' + file
-            file_clustering_process(path)
+            file_clustering_process(path, clevel)
         else:
             logging.info('No JSON file found')

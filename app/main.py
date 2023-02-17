@@ -39,6 +39,7 @@ if __name__ == '__main__':
     )
     parser.add_argument('--repo', type=str, help='Github repo')
     parser.add_argument('--version', action='version', version='%(prog)s ' + version_number)
+    parser.add_argument('--clevel', type=int, default=1, help='Clustering level (0.5-3)')
     parser.add_argument('--verbose', action='store_true', help='Verbose mode')
     parser.add_argument('--cluster', action='store_true', help='Run the clustering')
     args = parser.parse_args()
@@ -54,7 +55,10 @@ if __name__ == '__main__':
     if args.cluster:
         if os.listdir('../download/') != []:
             logging.info("Clustering : %s" % os.listdir('../download/'))
-            global_clustering()
+            if args.clevel:
+                global_clustering(args.clevel)
+            else:
+                global_clustering()
         else:
             logging.error("No repo downloaded")
     else:

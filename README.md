@@ -31,7 +31,7 @@ pip3 install -r requirements.txt
 ```bash
 python3 main.py --repo <repository> --cluster
 ```
-- Retrieve data and perform the clustering analysis with custom clustering level:
+- Retrieve data and perform the clustering analysis with a custom clustering level:
 ```bash
 python3 main.py --repo <repository> --cluster --clevel <clustering_level>
 ```

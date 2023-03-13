@@ -29,11 +29,11 @@ pip3 install -r requirements.txt
 ## Usage
 - Run the script to retrieve data from the GitHub API and perform the clustering analysis with default parameters:
 ```bash
-python3 main.py --repo <repository> --cluster
+python3 app/main.py --repo <repository> --cluster
 ```
 - Retrieve data and perform the clustering analysis with a custom clustering level:
 ```bash
-python3 main.py --repo <repository> --cluster --clevel <clustering_level>
+python3 app/main.py --repo <repository> --cluster --clevel <clustering_level>
 ```
 
 ## Documentation

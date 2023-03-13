@@ -26,7 +26,7 @@ class GetGithubInfos:
         # Read the API key from the config file
         config = ConfigParser()
         try:
-            config.read('config/.keys.cfg')
+            config.read('app/config/.keys.cfg')
             API_KEY = config.get('github', 'token')
             USER_AGENT = config.get('github', 'user-agent')
         except:
@@ -55,7 +55,7 @@ class GetGithubInfos:
                     # Serialize the object to a JSON string
                     data = repo.dict()
                     # Write the JSON string to a file
-                    with open('../download/%s_%s.json'% (owner.name, repo.name), 'w') as f:
+                    with open('download/%s_%s.json'% (owner.name, repo.name), 'w') as f:
                         json.dump(data, f, indent=4)
                     return False
                 for user in r.json():

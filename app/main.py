@@ -48,13 +48,11 @@ if __name__ == '__main__':
         logging.info("GetGithubInfos : %s" % args.repo)
         repos = GetGithubInfos(args.repo)
         repos.run()
-    else:
-        logging.error("No repo provided")    
-        logging.warning("Usage: python3 main.py --repo")
     # Run the clustering
     if args.cluster:
-        if os.listdir('../download/') != []:
-            logging.info("Clustering : %s" % os.listdir('../download/'))
+        json_files = [f for f in os.listdir('download/') if f.endswith('.json')]
+        if len(json_files) > 0:
+            logging.info("Clustering : %s" % json_files)
             if args.clevel:
                 global_clustering(args.clevel)
             else:

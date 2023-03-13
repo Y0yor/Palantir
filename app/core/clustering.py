@@ -92,10 +92,11 @@ def linkage_matrix(global_distance, df):
     labels = df.iloc[indices]['name']
     return link_matrix, indices, labels
     
-def export_dendrogram(link_matrix):
+def export_dendrogram(link_matrix, path):
     dendrogram(link_matrix)
     # Dendrogram
-    plt.savefig('../out/dendrogram.png', format='png')
+    logging.info("Export dendrogram : %s" % path)
+    plt.savefig('out/'+os.path.basename(path)+'_dendrogram.png', format='png')
     
 def cluster(link_matrix, global_distance, df):
     # Cluster
@@ -103,11 +104,12 @@ def cluster(link_matrix, global_distance, df):
     df['cluster'] = cluster
     return df
     
-def export_cluster(link_matrix, df, clevel):
+def export_cluster(link_matrix, df, clevel, path):
     clusters = fcluster(link_matrix,t=clevel, criterion='distance')
     df_clust = pd.DataFrame({'Cluster':clusters, 'Features':df['name']})
     df_clust = df_clust.sort_values(by=['Cluster'])
-    df_clust.to_csv('../out/cluster.csv', index=False)
+    logging.info("Export cluster : %s" % path)
+    df_clust.to_csv('out/'+os.path.basename(path)+'_cluster.csv', index=False)
     
 def file_clustering_process(path, clevel):
     # Get data
@@ -123,16 +125,14 @@ def file_clustering_process(path, clevel):
     # Linkage matrix
     link_matrix, indices, labels = linkage_matrix(gdistance, df)
     # Dendrogram
-    export_dendrogram(link_matrix)
+    export_dendrogram(link_matrix, path)
     # Cluster
     df = cluster(link_matrix, gdistance, df)
     # Export cluster
-    export_cluster(link_matrix, df, clevel)
+    export_cluster(link_matrix, df, clevel, path)
 
 def global_clustering(clevel=1.3):
-    for file in os.listdir('../download/'):
-        if file.endswith(".json"):
-            path = '../download/' + file
+    for f in os.listdir('download/'):
+        if f.endswith(".json"):
+            path = 'download/' + f
             file_clustering_process(path, clevel)
-        else:
-            logging.info('No JSON file found')
